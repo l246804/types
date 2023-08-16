@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "plop": "plop",
+    "change": "changeset",
+    "change:version": "changeset version",
+    "change:publish": "changeset publish",
+    "release": "run-s changeset:version change:publish"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.40.2",
+    "@changesets/cli": "^2.26.2",
+    "@rhao/plop-generators": "^0.3.3",
+    "commitizen": "^4.3.0",
+    "eslint": "^8.47.0",
+    "eslint-define-config": "^1.23.0",
+    "git-cz": "^4.9.0",
+    "npm-run-all": "^4.1.5",
+    "plop": "^3.1.2",
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6"
+  }
+}
