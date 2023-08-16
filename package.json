@@ -5,7 +5,7 @@
     "change": "changeset",
     "change:version": "changeset version",
     "change:publish": "changeset publish",
-    "release": "run-s changeset:version change:publish"
+    "release": "run-s change:version change:publish"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.40.2",
