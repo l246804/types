@@ -1,0 +1,46 @@
+{
+  "name": "@rhao/types-base",
+  "description": "基础类型定义。",
+  "type": "module",
+  "sideEffect": false,
+  "version": "0.0.0",
+  "author": "RayHao <https://github.com/l246804>",
+  "homepage": "https://github.com/l246804/types/tree/dev/packages/base",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/l246804/types"
+  },
+  "bugs": {
+    "url": "https://github.com/l246804/types/issues"
+  },
+  "keywords": [
+    "ts",
+    "typescript",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "require": "./index.ts",
+      "import": "./index.ts"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
+  "files": [
+    "index.ts",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "peerDependencies": {
+    "typescript": ">=5"
+  },
+  "license": "MIT"
+}
