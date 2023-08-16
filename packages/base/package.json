@@ -1,6 +1,6 @@
 {
   "name": "@rhao/types-base",
-  "description": "基础类型定义。",
+  "description": "基础通用类型定义。",
   "type": "module",
   "sideEffect": false,
   "version": "0.0.0",
