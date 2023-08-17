@@ -79,7 +79,7 @@ export type AllowNullish<T> = T | Nullish
  */
 export type NotNullish<T> = [T] extends [Nullish] ? never : T
 
-export type Recordable<T, K extends string | number | symbol = string> = Record<K, T>
+export type Recordable<T = any, K extends string | number | symbol = string> = Record<K, T>
 
 export type Mutable<T> = {
   -readonly [K in keyof T]: T[K]
