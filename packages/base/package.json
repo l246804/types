@@ -23,24 +23,30 @@
   },
   "exports": {
     ".": {
-      "types": "./index.ts",
-      "require": "./index.ts",
-      "import": "./index.ts"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     },
     "./*": "./*"
   },
-  "main": "./index.ts",
-  "module": "./index.ts",
-  "types": "./index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "index.ts",
+    "dist",
     "README.md"
   ],
+  "scripts": {
+    "build": "unbuild"
+  },
   "engines": {
     "node": ">=14"
   },
   "peerDependencies": {
     "typescript": ">=5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "unbuild": "^1.2.1"
+  }
 }
