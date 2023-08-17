@@ -3,7 +3,7 @@
   "description": "基础通用类型定义。",
   "type": "module",
   "sideEffect": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "RayHao <https://github.com/l246804>",
   "homepage": "https://github.com/l246804/types/tree/dev/packages/base",
   "repository": {
