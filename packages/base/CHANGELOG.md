@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.1.2
+
+### Patch Changes
+
+- 8cc51d6: build: 发布前进行构建
+
 ## 0.1.1
 
 ### Patch Changes
