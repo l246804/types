@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.1.3
+
+### Patch Changes
+
+- 21a8794: fix: 修复构建工具会解析到空文件
+
 ## 0.1.2
 
 ### Patch Changes
