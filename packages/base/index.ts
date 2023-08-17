@@ -1,3 +1,5 @@
+export default {}
+
 /**
  * 原始值类型
  */
