@@ -72,9 +72,9 @@ export type MaybeArray<T> = T | T[]
 export type Nullish = null | undefined
 
 /**
- * 允许为 `null` 和 `undefined`
+ * 支持为 `null` 和 `undefined`
  */
-export type AllowNullish<T> = T | Nullish
+export type MaybeNullish<T> = T | Nullish
 
 /**
  * 非 `null` 和 `undefined`
@@ -82,6 +82,10 @@ export type AllowNullish<T> = T | Nullish
 export type NotNullish<T> = [T] extends [Nullish] ? never : T
 
 export type Recordable<T = any, K extends string | number | symbol = string> = Record<K, T>
+
+export type PlainObject<T = any> = {
+  [key: string]: T
+}
 
 export type Mutable<T> = {
   -readonly [K in keyof T]: T[K]
@@ -136,3 +140,13 @@ export type Simplify<T> = {
 }
 
 export type ElementOf<T> = T extends Array<infer E> ? E : never
+
+export type PartialWithout<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
+
+export type RequiredWithout<T, K extends keyof T> = Pick<T, K> & Required<Omit<T, K>>
+
+export type ReadonlyWithout<T, K extends keyof T> = Pick<T, K> & Readonly<Omit<T, K>>
+
+export type MutableWithout<T, K extends keyof T> = Pick<T, K> & Mutable<Omit<T, K>>
+
+export type IfUnknown<T, V> = [T] extends [unknown] ? V : T
