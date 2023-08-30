@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.2.0
+
+### Minor Changes
+
+- d926919: feat: 新增工具类型
+
 ## 0.1.3
 
 ### Patch Changes
