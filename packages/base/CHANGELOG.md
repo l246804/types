@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.2.1
+
+### Patch Changes
+
+- 4b163b4: fix: 修复 NotNullish、IfUnknown 问题
+
 ## 0.2.0
 
 ### Minor Changes
