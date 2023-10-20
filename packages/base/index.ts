@@ -8,6 +8,7 @@ export type Primitive = string | number | boolean | bigint | symbol | undefined 
 /**
  * 内置值类型
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type Builtin = Primitive | Function | Date | Error | RegExp
 
 /**
@@ -79,11 +80,11 @@ export type MaybeNullish<T> = T | Nullish
 /**
  * 非 `null` 和 `undefined`
  */
-export type NotNullish<T> = [T] extends [Nullish] ? never : T
+export type NotNullish<T> = [T] extends [MaybeNullish<infer U>] ? U : T
 
 export type Recordable<T = any, K extends string | number | symbol = string> = Record<K, T>
 
-export type PlainObject<T = any> = {
+export interface PlainObject<T = any> {
   [key: string]: T
 }
 
@@ -107,7 +108,8 @@ export type DeepReadonly<T> = T extends Builtin
   ? WeakSet<DeepReadonly<U>>
   : T extends Promise<infer U>
   ? Promise<DeepReadonly<U>>
-  : T extends {}
+  : // eslint-disable-next-line @typescript-eslint/ban-types
+  T extends {}
   ? {
       readonly [K in keyof T]: DeepReadonly<T[K]>
     }
@@ -129,7 +131,8 @@ export type DeepPartial<T> = T extends Builtin
   ? WeakSet<DeepPartial<U>>
   : T extends Promise<infer U>
   ? Promise<DeepPartial<U>>
-  : T extends {}
+  : // eslint-disable-next-line @typescript-eslint/ban-types
+  T extends {}
   ? {
       readonly [K in keyof T]: DeepPartial<T[K]>
     }
@@ -149,4 +152,4 @@ export type ReadonlyWithout<T, K extends keyof T> = Pick<T, K> & Readonly<Omit<T
 
 export type MutableWithout<T, K extends keyof T> = Pick<T, K> & Mutable<Omit<T, K>>
 
-export type IfUnknown<T, V> = [T] extends [unknown] ? V : T
+export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
