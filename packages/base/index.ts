@@ -152,4 +152,14 @@ export type ReadonlyWithout<T, K extends keyof T> = Pick<T, K> & Readonly<Omit<T
 
 export type MutableWithout<T, K extends keyof T> = Pick<T, K> & Mutable<Omit<T, K>>
 
+export type PartialWith<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>
+
+export type RequiredWith<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>
+
+export type ReadonlyWith<T, K extends keyof T> = Readonly<Pick<T, K>> & Omit<T, K>
+
+export type MutableWith<T, K extends keyof T> = Mutable<Pick<T, K>> & Omit<T, K>
+
 export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
+
+export type IfAny<T, V> = [unknown] extends [T] ? V : T
