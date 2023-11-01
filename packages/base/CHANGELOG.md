@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.3.0
+
+### Minor Changes
+
+- adb3273: feat: add types of util
+
 ## 0.2.1
 
 ### Patch Changes
