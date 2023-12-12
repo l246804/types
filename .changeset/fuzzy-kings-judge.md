@@ -2,4 +2,4 @@
 '@rhao/types-base': minor
 ---
 
-feat: add UnionToIntersection
+feat: add IfNever

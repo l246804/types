@@ -2,4 +2,4 @@
 '@rhao/types-base': patch
 ---
 
-remove IfAny
+chore: remove IfAny

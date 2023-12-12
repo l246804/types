@@ -162,6 +162,8 @@ export type MutableWith<T, K extends keyof T> = Mutable<Pick<T, K>> & Omit<T, K>
 
 export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
 
+export type IfNever<T, V> = [T] extends [never] ? V : T
+
 /**
  * 联合类型转为交叉类型
  * @example
