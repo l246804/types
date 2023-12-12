@@ -161,3 +161,20 @@ export type ReadonlyWith<T, K extends keyof T> = Readonly<Pick<T, K>> & Omit<T, 
 export type MutableWith<T, K extends keyof T> = Mutable<Pick<T, K>> & Omit<T, K>
 
 export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
+
+/**
+ * 联合类型转为交叉类型
+ * @example
+ * ```ts
+ * type A = { a: number; }
+ * type B = { b: string; }
+ *
+ * type C = UnionToIntersection<A | B>
+ * // => { a?: number; b?: string }
+ * ```
+ */
+export type UnionToIntersection<U, K extends keyof U = keyof U> = (
+  U extends any ? (u: PartialWith<U, Exclude<keyof U, K>>) => void : never
+) extends (p: infer P) => any
+  ? Simplify<P>
+  : never
