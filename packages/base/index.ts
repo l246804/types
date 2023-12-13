@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 export default {}
 
 /**
@@ -8,7 +9,7 @@ export type Primitive = string | number | boolean | bigint | symbol | undefined 
 /**
  * 内置值类型
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+
 export type Builtin = Primitive | Function | Date | Error | RegExp
 
 /**
@@ -108,8 +109,7 @@ export type DeepReadonly<T> = T extends Builtin
   ? WeakSet<DeepReadonly<U>>
   : T extends Promise<infer U>
   ? Promise<DeepReadonly<U>>
-  : // eslint-disable-next-line @typescript-eslint/ban-types
-  T extends {}
+  : T extends {}
   ? {
       readonly [K in keyof T]: DeepReadonly<T[K]>
     }
@@ -131,8 +131,7 @@ export type DeepPartial<T> = T extends Builtin
   ? WeakSet<DeepPartial<U>>
   : T extends Promise<infer U>
   ? Promise<DeepPartial<U>>
-  : // eslint-disable-next-line @typescript-eslint/ban-types
-  T extends {}
+  : T extends {}
   ? {
       readonly [K in keyof T]: DeepPartial<T[K]>
     }
@@ -163,6 +162,25 @@ export type MutableWith<T, K extends keyof T> = Mutable<Pick<T, K>> & Omit<T, K>
 export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
 
 export type IfNever<T, V> = [T] extends [never] ? V : T
+
+/**
+ * keyof 增强版（偏向于 string）
+ * @example
+ * ```ts
+ * type A = KeyOf<{ a: string; b: number; }>
+ * // => 'a' | 'b' | {}
+ *
+ * type A = KeyOf<boolean>
+ * // => string
+ * ```
+ */
+export type KeyOf<T> = T extends Primitive
+  ? string
+  : keyof T extends infer K
+  ? K extends string
+    ? K | {}
+    : string
+  : string
 
 /**
  * 联合类型转为交叉类型
