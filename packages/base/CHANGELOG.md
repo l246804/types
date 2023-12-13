@@ -1,5 +1,17 @@
 # @rhao/types-base
 
+## 0.4.0
+
+### Minor Changes
+
+- f90e13b: feat: add UnionToIntersection
+- 9deb958: feat: add IfNever
+- 4b63e4d: feat: add KeyOf
+
+### Patch Changes
+
+- 1cc8aa6: chore: remove IfAny
+
 ## 0.3.0
 
 ### Minor Changes
