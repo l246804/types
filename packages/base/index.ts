@@ -165,6 +165,8 @@ export type IfUnknown<T, V, F = T> = [unknown] extends [T] ? V : F
 
 export type IfNever<T, V, F = T> = [T] extends [never] ? V : F
 
+export type IfEmpty<T, V, F = T> = [T] extends ['' | Nullish] ? V : F
+
 /**
  * keyof 增强版（偏向于 string）
  * @example
