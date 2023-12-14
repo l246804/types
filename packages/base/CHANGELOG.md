@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.6.0
+
+### Minor Changes
+
+- 789a760: feat: add IfEmpty
+
 ## 0.5.0
 
 ### Minor Changes
