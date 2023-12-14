@@ -141,7 +141,9 @@ export type Simplify<T> = {
   [P in keyof T]: T[P]
 }
 
-export type ElementOf<T> = T extends Array<infer E> ? E : never
+export type ElementOf<T, V = never> = T extends Array<infer E> ? E : V
+
+export type RecordElementOf<T, V = never> = T extends Recordable<infer E> ? E : V
 
 export type PartialWithout<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
 
@@ -159,9 +161,9 @@ export type ReadonlyWith<T, K extends keyof T> = Readonly<Pick<T, K>> & Omit<T, 
 
 export type MutableWith<T, K extends keyof T> = Mutable<Pick<T, K>> & Omit<T, K>
 
-export type IfUnknown<T, V> = [unknown] extends [T] ? V : T
+export type IfUnknown<T, V, F = T> = [unknown] extends [T] ? V : F
 
-export type IfNever<T, V> = [T] extends [never] ? V : T
+export type IfNever<T, V, F = T> = [T] extends [never] ? V : F
 
 /**
  * keyof 增强版（偏向于 string）
