@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.5.0
+
+### Minor Changes
+
+- e91408a: feat: add RecordElementOf
+
 ## 0.4.0
 
 ### Minor Changes
