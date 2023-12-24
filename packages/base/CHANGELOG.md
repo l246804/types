@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 0.7.0
+
+### Minor Changes
+
+- 4b3a871: feat: 添加类型工具 PromiseResult
+
 ## 0.6.0
 
 ### Minor Changes
