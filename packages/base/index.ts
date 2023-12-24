@@ -202,3 +202,15 @@ export type UnionToIntersection<U, K extends keyof U = keyof U> = (
 ) extends (p: infer P) => any
   ? Simplify<P>
   : never
+
+/**
+ * 获取 Promise 结果类型
+ * @example
+ * ```ts
+ * type P = Promise<string>
+ *
+ * type R = PromiseResult<R>
+ * // => string
+ * ```
+ */
+export type PromiseResult<T> = T extends Promise<infer U> ? U : T
