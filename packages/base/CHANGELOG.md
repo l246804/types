@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.0.0
+
+### Major Changes
+
+- a9d84a9: refactor: 重构类型工具
+
 ## 0.7.0
 
 ### Minor Changes
