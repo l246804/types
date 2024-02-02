@@ -46,6 +46,9 @@
     "typescript": ">=5"
   },
   "license": "MIT",
+  "dependencies": {
+    "type-fest": "^4.10.2"
+  },
   "devDependencies": {
     "unbuild": "^1.2.1"
   }
