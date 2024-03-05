@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.1.0
+
+### Minor Changes
+
+- 92973f2: feat: add WithChildren
+
 ## 1.0.0
 
 ### Major Changes
