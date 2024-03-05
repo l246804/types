@@ -391,3 +391,27 @@ export type IfEmpty<T, V = true, F = false> = [T] extends ['' | Nullish] ? V : F
 export type KeyOf<T, BaseType extends Primitive = PropertyKey> = T extends Primitive
   ? BaseType
   : LiteralUnion<keyof T, BaseType>
+
+/**
+ * 设置子级列表
+ * @example
+ * ```ts
+ * interface Model {
+ *   a: string;
+ *   b: number;
+ * }
+ *
+ * type TreeModel = WithChildren<Model, 'children', false>
+ * ```
+ */
+export type WithChildren<
+  T,
+  ChildrenKey extends string = 'children',
+  Required extends boolean = false,
+> = Simplify<
+  T &
+    PartialWith<
+      Record<ChildrenKey, WithChildren<T, ChildrenKey, Required>[]>,
+      Required extends true ? never : ChildrenKey
+    >
+>
