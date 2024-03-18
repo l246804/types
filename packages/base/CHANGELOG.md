@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.2.0
+
+### Minor Changes
+
+- a41b41a: feat: add IfNullish
+
 ## 1.1.0
 
 ### Minor Changes
