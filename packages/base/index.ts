@@ -369,6 +369,15 @@ export type SetWritable<BaseType, Keys extends keyof BaseType> = Simplify<
 export type WritableWith<T, K extends keyof T> = SetWritable<T, K>
 
 /**
+ * 是否为 `null`、`undefined`
+ * @example
+ * ```ts
+ * type A = IfNullish<undefined, 'A', 'B'> // 'A'
+ * ```
+ */
+export type IfNullish<T, V = true, F = false> = [T] extends [Nullish] ? V : F
+
+/**
  * 是否为 `null`、`undefined`、`''`
  * @example
  * ```ts
