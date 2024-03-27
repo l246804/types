@@ -13,6 +13,27 @@ import type {
 
 export type * from 'type-fest'
 
+export type {
+  FirstArrayElement,
+  IsLowerCase,
+  IsNotFalse,
+  IsNumeric,
+  IsPlainObject,
+  IsPrimitive,
+  IsUnion,
+  IsUpperCase,
+  IsWhitespace,
+  StringDigit,
+  Subtract,
+  TupleLength,
+  UndefinedToOptional,
+  UnionMax,
+  UnionMin,
+  UpperCaseCharacters,
+  Whitespace,
+  WordSeparators,
+} from 'type-fest/source/internal'
+
 export default {}
 
 /**
