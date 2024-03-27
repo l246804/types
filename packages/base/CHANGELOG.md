@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.3.0
+
+### Minor Changes
+
+- 2939e5d: feat: add type-utils
+
 ## 1.2.0
 
 ### Minor Changes
