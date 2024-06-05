@@ -1,13 +1,15 @@
 import type {
   Asyncify,
   Except,
+  IfAny,
+  IfNever,
+  IfUnknown,
   LiteralUnion,
   Primitive,
   Promisable,
   SetOptional,
   SetReadonly,
   SetRequired,
-  Simplify,
   Writable,
 } from 'type-fest'
 
@@ -265,7 +267,7 @@ export type ObjectElementOf<T, Fallback = never> = T extends Recordable<infer E,
  * // => { a: string; b?: number }
  * ```
  */
-export type PartialWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Partial<Omit<T, K>>>
+export type PartialWithout<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
 
 /**
  * 除过指定属性，其他属性转为必填
@@ -280,7 +282,7 @@ export type PartialWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Partial
  * // => { a?: string; b: number }
  * ```
  */
-export type RequiredWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Required<Omit<T, K>>>
+export type RequiredWithout<T, K extends keyof T> = Pick<T, K> & Required<Omit<T, K>>
 
 /**
  * 除过指定属性，其他属性转为只读
@@ -295,7 +297,7 @@ export type RequiredWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Requir
  * // => { a: string; readonly b: number }
  * ```
  */
-export type ReadonlyWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Readonly<Omit<T, K>>>
+export type ReadonlyWithout<T, K extends keyof T> = Pick<T, K> & Readonly<Omit<T, K>>
 
 /**
  * 除过指定属性，其他属性转为可写
@@ -310,7 +312,7 @@ export type ReadonlyWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Readon
  * // => { readonly a: string; b: number }
  * ```
  */
-export type WritableWithout<T, K extends keyof T> = Simplify<Pick<T, K> & Writable<Omit<T, K>>>
+export type WritableWithout<T, K extends keyof T> = Pick<T, K> & Writable<Omit<T, K>>
 
 /**
  * 指定属性转为可选
@@ -370,9 +372,8 @@ export type ReadonlyWith<T, K extends keyof T> = SetReadonly<T, K>
  * // => { a: string; readonly b: number }
  * ```
  */
-export type SetWritable<BaseType, Keys extends keyof BaseType> = Simplify<
-  Except<BaseType, Keys> & Writable<Pick<BaseType, Keys>>
->
+export type SetWritable<BaseType, Keys extends keyof BaseType> = Except<BaseType, Keys> &
+  Writable<Pick<BaseType, Keys>>
 
 /**
  * 指定属性转为可写
@@ -408,6 +409,90 @@ export type IfNullish<T, V = true, F = false> = [T] extends [Nullish] ? V : F
 export type IfEmpty<T, V = true, F = false> = [T] extends ['' | Nullish] ? V : F
 
 /**
+ * 是否为 `true`
+ * @example
+ * ```ts
+ * type A = IfTruthy<true, true, false> // false
+ * ```
+ */
+export type IfTrue<T, V = true, F = false> = [T] extends [true] ? V : F
+
+/**
+ * 泛型 `T` 若为 `never` 则替换为 `U`，否则为 `T`
+ * @example
+ * ```ts
+ * type A = never
+ * type B = ReplaceNever<A, string>
+ * // => string
+ *
+ * type C = string
+ * type D = ReplaceNever<C, number>
+ * // => string
+ * ```
+ */
+export type ReplaceNever<T, U> = IfNever<T, U, T>
+
+/**
+ * 泛型 `T` 若为 `unknown` 则替换为 `U`，否则为 `T`
+ * @example
+ * ```ts
+ * type A = unknown
+ * type B = ReplaceUnknown<A, string>
+ * // => string
+ *
+ * type C = string
+ * type D = ReplaceUnknown<C, number>
+ * // => string
+ * ```
+ */
+export type ReplaceUnknown<T, U> = IfUnknown<T, U, T>
+
+/**
+ * 泛型 `T` 若为 `any` 则替换为 `U`，否则为 `T`
+ * @example
+ * ```ts
+ * type A = any
+ * type B = ReplaceAny<A, string>
+ * // => string
+ *
+ * type C = string
+ * type D = ReplaceAny<C, number>
+ * // => string
+ * ```
+ */
+export type ReplaceAny<T, U> = IfAny<T, U, T>
+
+/**
+ * 泛型 `T` 若为 `Nullish` 则替换为 `U`，否则为 `T`
+ * @example
+ * ```ts
+ * type A = Nullish
+ * type B = ReplaceNullish<A, string>
+ * // => string
+ *
+ * type C = string
+ * type D = ReplaceNullish<C, number>
+ * // => string
+ * ```
+ */
+export type ReplaceNullish<T, U> = IfNullish<T, U, T>
+
+/**
+ * 泛型 `T` 若为 `null`、`undefined`、`''` 则替换为 `U`，否则为 `T`
+ * @example
+ * ```ts
+ * type A = ''
+ * type B = ReplaceEmpty<A, string>
+ * // => string
+ *
+ * type C = string
+ * type D = ReplaceEmpty<C, number>
+ * // => string
+ * ```
+ */
+export type ReplaceEmpty<T, U> = IfEmpty<T, U, T>
+
+/**
  * 宽松版 `keyof`
  * @example
  * ```ts
@@ -438,10 +523,8 @@ export type WithChildren<
   T,
   ChildrenKey extends string = 'children',
   Required extends boolean = false,
-> = Simplify<
-  T &
-    PartialWith<
-      Record<ChildrenKey, WithChildren<T, ChildrenKey, Required>[]>,
-      Required extends true ? never : ChildrenKey
-    >
->
+> = T &
+  PartialWith<
+    Record<ChildrenKey, WithChildren<T, ChildrenKey, Required>[]>,
+    Required extends true ? never : ChildrenKey
+  >
