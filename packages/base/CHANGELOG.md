@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.5.0
+
+### Minor Changes
+
+- 5dccbf4: feat: add Promisify
+
 ## 1.4.0
 
 ### Minor Changes
