@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.6.0
+
+### Minor Changes
+
+- 862a8b8: feat: add AssertKeyOf
+
 ## 1.5.0
 
 ### Minor Changes
