@@ -85,6 +85,20 @@ export type PromiseFn<Args extends any[] = any[], Return = unknown, ThisArg = an
 export type ToPromiseFn<T extends AnyFn> = Asyncify<T>
 
 /**
+ * 将 `T` 转为 `Promise<T>`，会对 `T` 进行 `Promise` 拆包
+ *
+ * @example
+ * ```ts
+ * type A = Promisify<Promise<Promise<string>>>
+ * // => Promise<string>
+ *
+ * type B = Promisify<number>
+ * // => Promise<number>
+ * ```
+ */
+export type Promisify<T> = Promise<Awaited<T>>
+
+/**
  * 支持异步返回值
  * @example
  * ```ts
