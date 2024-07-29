@@ -522,6 +522,17 @@ export type KeyOf<T, BaseType extends Primitive = PropertyKey> = T extends Primi
   : LiteralUnion<keyof T, BaseType>
 
 /**
+ * 断言 `KeyOf<T>` 为 `T` 的索引
+ * @example
+ * ```ts
+ * type InferValue<T, K extends KeyOf<T>> = T[K] // × TS Error
+ *
+ * type InferValue<T, K extends KeyOf<T>> = T[AssertKeyOf<Keys, T>] // √ TS Pass
+ * ```
+ */
+export type AssertKeyOf<Keys, T> = Keys extends keyof T ? Keys : never
+
+/**
  * 设置子级列表
  * @example
  * ```ts
