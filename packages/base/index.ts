@@ -553,3 +553,29 @@ export type WithChildren<
     Record<ChildrenKey, WithChildren<T, ChildrenKey, Required>[]>,
     Required extends true ? never : ChildrenKey
   >
+
+/**
+ * 判断联合类型 `T` 内是否存在 U 类型，若 `T` 为 `never`、`unknown`、`any` 任意一种则恒为 `false`
+ * @example
+ * ```ts
+ * UnionHas<any | string, string>
+ * // => false
+ *
+ * UnionHas<unknown | string, string>
+ * // => false
+ *
+ * UnionHas<never, string>
+ * // => false
+ *
+ * UnionHas<string | number, boolean>
+ * // => false
+ *
+ * UnionHas<Promise<string> | number | boolean, Promise<any>>
+ * // => true
+ * ```
+ */
+export type UnionHas<T, U> = IfNever<
+  T,
+  false,
+  IfUnknown<T, false, IfAny<T, false, U extends T ? true : false>>
+>
