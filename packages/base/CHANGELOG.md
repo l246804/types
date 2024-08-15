@@ -1,5 +1,11 @@
 # @rhao/types-base
 
+## 1.7.0
+
+### Minor Changes
+
+- 3322117: feat: add UnionHas
+
 ## 1.6.0
 
 ### Minor Changes
