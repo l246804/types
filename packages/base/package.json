@@ -47,6 +47,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "type-fest": "^4.10.2"
+    "type-fest": "^4.37.0"
   }
 }

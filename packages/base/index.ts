@@ -26,7 +26,6 @@ export type {
   IsUpperCase,
   IsWhitespace,
   StringDigit,
-  Subtract,
   TupleLength,
   UndefinedToOptional,
   UnionMax,
@@ -34,9 +33,9 @@ export type {
   UpperCaseCharacters,
   Whitespace,
   WordSeparators,
+  IfArrayReadonly,
+  ValueOfUnion,
 } from 'type-fest/source/internal'
-
-export default {}
 
 /**
  * 指定参数和返回类型函数签名
