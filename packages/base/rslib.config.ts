@@ -5,20 +5,25 @@ export default defineConfig({
     {
       format: 'esm',
       syntax: 'es2022',
-      dts: {
-        bundle: true,
-      },
+      dts: true,
       autoExtension: false,
       source: {
         entry: {
-          index: './index.ts'
-        }
+          index: './index.ts',
+        },
       },
       output: {
         target: 'web',
         filename: {
           js: '[name].js',
         },
+        copy: [
+          {
+            context: './node_modules/type-fest',
+            from: '**/*.d.ts',
+            to: 'type-fest',
+          },
+        ],
       },
     },
   ],

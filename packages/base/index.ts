@@ -14,28 +14,7 @@ import type {
 } from 'type-fest'
 
 export type * from 'type-fest'
-
-export type {
-  FirstArrayElement,
-  IsLowerCase,
-  IsNotFalse,
-  IsNumeric,
-  IsPlainObject,
-  IsPrimitive,
-  IsUnion,
-  IsUpperCase,
-  IsWhitespace,
-  StringDigit,
-  TupleLength,
-  UndefinedToOptional,
-  UnionMax,
-  UnionMin,
-  UpperCaseCharacters,
-  Whitespace,
-  WordSeparators,
-  IfArrayReadonly,
-  ValueOfUnion,
-} from 'type-fest/source/internal'
+export type * from 'type-fest/source/internal'
 
 /**
  * 指定参数和返回类型函数签名

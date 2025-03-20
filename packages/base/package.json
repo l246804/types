@@ -37,7 +37,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rslib build"
+    "build": "rslib build && node ./scripts/replace_type_fest.js"
   },
   "engines": {
     "node": ">=14"

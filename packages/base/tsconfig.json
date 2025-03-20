@@ -6,7 +6,7 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "strict": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "resolveJsonModule": true,
     "noImplicitAny": false,
     "removeComments": false,
@@ -20,7 +20,10 @@
     "downlevelIteration": true,
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "type-fest/*": ["./type-fest/*"]
+    }
   },
-  "include": ["**/*.ts"]
+  "include": ["index.ts"]
 }
