@@ -11,7 +11,9 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.20.0",
     "@changesets/cli": "^2.26.2",
+    "@microsoft/api-extractor": "^7.52.1",
     "@rhao/plop-generators": "^1.2.7",
+    "@rslib/core": "^0.5.4",
     "commitizen": "^4.3.0",
     "eslint": "^9.4.0",
     "git-cz": "^4.9.0",
