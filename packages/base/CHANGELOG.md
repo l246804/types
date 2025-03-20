@@ -1,5 +1,16 @@
 # @rhao/types-base
 
+## 1.8.0
+
+### Minor Changes
+
+- fff24db: feat: 更新 type-fest 版本，并新增类型工具
+
+### Patch Changes
+
+- 7dd9bdb: chore: 优化构建产物
+- 995c18b: chore: 使用 rslib 作为捆绑器
+
 ## 1.7.0
 
 ### Minor Changes
